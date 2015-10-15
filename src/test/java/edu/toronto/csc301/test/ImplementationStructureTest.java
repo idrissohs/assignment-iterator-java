@@ -67,5 +67,8 @@ public class ImplementationStructureTest extends AssignmentTestBase{
 	  assertClassHasDefaultConstructor(AssignmentTestBase.CLASS_NAME_DATA_LOADER);
   }
 
+public static void main(String[] args) {
+}
+
 
 }

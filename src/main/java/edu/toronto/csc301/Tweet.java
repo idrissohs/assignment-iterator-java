@@ -15,7 +15,6 @@ public class Tweet implements ITweet{
 	private String text;
 	private Set<String> hashTags;
 	
-	
 	public Tweet(String username, String text) {
 		setUsername(username);
 		setText(text);
