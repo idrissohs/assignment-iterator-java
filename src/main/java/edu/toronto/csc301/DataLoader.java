@@ -19,7 +19,9 @@ public class DataLoader implements IDataLoader {
 	
 	
 	public Iterator<ITweet> iterator (InputStream data, Set<String> hashtags) throws IOException {
-		Iterator <ITweet> stream = new TweetFilteringIterator (data, hashtags);
+		Iterator <ITweet> iter = new TweetStreamReadingIterator (data);
+		Iterator <ITweet> stream = new TweetFilteringIterator (iter, hashtags);
+		return stream;
 	}
 	
 }

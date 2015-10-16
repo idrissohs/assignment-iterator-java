@@ -29,10 +29,11 @@ public class TweetStreamReadingIterator implements Iterator<ITweet> {
 		String t;
 		try{
 			t = this.r.readLine();
+			return processString(t);
 		}catch (IOException e){
 			e.printStackTrace();
 		}
-		return processString(t);
+		return null;
 	}
 
 	public ITweet processString(String tweetString){
