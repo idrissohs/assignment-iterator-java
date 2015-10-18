@@ -1,9 +1,9 @@
 package edu.toronto.csc301;
 
 import java.io.IOException;
+import java.util.Set;
 import java.io.InputStream;
 import java.util.Iterator;
-import java.util.Set;
 
 /**
  * Implementations of this interface allow us to read Tweets.

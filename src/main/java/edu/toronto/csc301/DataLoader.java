@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class DataLoader implements IDataLoader {
 	 /**
@@ -20,7 +21,20 @@ public class DataLoader implements IDataLoader {
 	
 	public Iterator<ITweet> iterator (InputStream data, Set<String> hashtags) throws IOException {
 		Iterator <ITweet> iter = new TweetStreamReadingIterator (data);
-		Iterator <ITweet> stream = new TweetFilteringIterator (iter, hashtags);
+		Predicate <Set<String>> filter = new Predicate <Set<String>> (){
+			public boolean test (Set<String> h){
+				if (hashtags == null)
+					return false;
+				return h.containsAll(hashtags);
+			}
+		};
+		if (hashtags == null){
+			throw new NullPointerException("Null hashtag list");
+		}
+		if (hashtags.isEmpty()){
+			throw new IllegalArgumentException("Empty Hashtag list");
+		}
+		Iterator <ITweet> stream = new TweetFilteringIterator (iter, filter );
 		return stream;
 	}
 	
